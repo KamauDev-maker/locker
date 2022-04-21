@@ -43,3 +43,16 @@ def  add_credentials(new_credentials):
     function to save credentials
     """
     new_credentials.add_credentials()
+    
+    
+def  remove_credentials(new_credentials):
+    """
+    function to delete credentials
+    """
+    new_credentials.delete_credentials
+    
+def display_credentials():
+    """
+    function that returns all saved credentials
+    """
+    return Credentials.display_credentials()
