@@ -15,3 +15,10 @@ class Credentials:
             account_username (_type_): _description_
             account_password (_type_): _description_
         """
+        self.application_name = application_name
+        self.account_username = account_username
+        self.account_password = account_password
+    def  save_credentials(self):
+        """method that adds credentials into credentials_list
+        """
+        Credentials.credentials__list.append(self)
