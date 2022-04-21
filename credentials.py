@@ -31,3 +31,15 @@ def  existing_user(username, login_password):
     function to authenticate user 
     """
     return Users.user_exists(username, login_password)
+
+def  create_credentials(application_name,account_username,account_password):
+    """
+    function to create new credentials 
+    """
+    new_credentials = Credentials(application_name,account_username,account_password)
+
+def  add_credentials(new_credentials):
+    """
+    function to save credentials
+    """
+    new_credentials.add_credentials()
