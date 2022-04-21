@@ -66,7 +66,11 @@ class Credentials:
         """
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits
         return "".join(random.choice(password)for i in range(passwordLenght))
-     
+    @classmethod
+    def  copy_password(cls,account):
+         found_credentials = Credentials.find_credential(account)
+         pyperclip.copy(found_credentials.password)
+         
     
          
         
