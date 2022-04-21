@@ -50,7 +50,14 @@ class Credentials:
         for credential in Credentials.credentials__list:
             if credential.application_name == application_name:
                 return True
-        return False    
+        return False
+    
+    @classmethod
+    def  display_credentials(cls):
+        """ method that returns a list of all credentials
+        """
+        return Credentials.credentials__list
+       
     
          
         
