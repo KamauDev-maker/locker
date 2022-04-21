@@ -18,8 +18,8 @@ class Credentials:
         self.application_name = application_name
         self.account_username = account_username
         self.account_password = account_password
-    def  save_credentials(self):
-        """method that adds credentials into credentials_list
+    def  add_credentials(self):
+        """method that saves credentials into credentials_list
         """
         Credentials.credentials__list.append(self)
     
@@ -70,7 +70,31 @@ class Credentials:
     def  copy_password(cls,account):
          found_credentials = Credentials.find_credential(account)
          pyperclip.copy(found_credentials.password)
-         
+
+
+class Users:
+    """class that generates new instances of users
+    """
+    users_list = []
     
-         
-        
+    def  __init__(self,username,login_password):
+        """
+         method that helps us define properties for our object
+        Args:
+            username :New username
+            login_password:New user password
+        """
+        self.username = username
+        self.login_password = login_password
+             
+    def  add_user(self):
+        """
+        add user details method saves user objects
+        """
+        Users.users_list.append(self)
+    
+    def  delete_user(self):
+        """
+        method removes user details
+        """  
+        Users.users_list.remove(self) 
