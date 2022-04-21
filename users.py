@@ -57,7 +57,16 @@ class Credentials:
         """ method that returns a list of all credentials
         """
         return Credentials.credentials__list
-       
+    
+    def  generate_password(passwordLenght):
+        """
+        method that generates a random password for the account user
+        Args:
+            passwordLenght: password lenght for the account user
+        """
+        password = string.ascii_uppercase + string.ascii_lowercase + string.digits
+        return "".join(random.choice(password)for i in range(passwordLenght))
+     
     
          
         
