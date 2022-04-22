@@ -1,3 +1,4 @@
+from numpy import int32
 from users import Users, Credentials
 
 def  create_user(username,login_password):
@@ -160,7 +161,44 @@ def main():
                                                     if gen_pass == 'Y':
                                                         print("How long would you like your password to be? ")
                                                         print(" "*6 + "less than 8 characters: WEAK" + "\n" + " "*6 + "8 characters:STRONG" + "\n" + " "*6 + "8-20 characters:VERY STRONG") 
-                                                        while True:  
-                                                                          
+                                                        while True:
+                                                            try:
+                                                                passwordLength = int(input())
+                                                                if passwordLength in range(21):
+                                                                    account_password = generate_a_password(passwordLength)
+                                                                    print(f"Password generated is {account_password}")
+                                                                    add_credentials(create_credentials(
+                                                                                                   
+                                                                        application_name,account_username,account_password))
+                                                                    print(f"Account credentials for your {application_name} have been successfully saved. \n")
+                                                                    break
+                                                            except ValueError: 
+                                                                print("\nYou did not pick a valid password lenght")
+                                                                print("Please pick a number between 0-20 and try again")
+                                                                continue
+                                                    elif gen_pass == 'N':
+                                                            print(f"Choose a password you wish to use for your {application_name} account")
+                                                            print(" "*6 + "*Password must be longer than 8 characters*")
+                                                            while True:
+                                                                account_password = input()
+                                                                if len(account_password) >=8:
+                                                                    add_credentials(create_credentials(
+                                                                
+                                                                       application_name,account_username,account_password)) 
+                                                                    print(f"Account credentials for you {application_name} have been successfully saved. \n")
+                                                                    break
+                                                                else:
+                                                                    print("\nThe password your entered is too short ")
+                                                                    print("Please use a password of 8 characters or more.")
+                                                                    continue 
+                                                    else:
+                                                        print("You did not select a valid option")
+                                                        print("Please enter (Y/N) and try again")
+                                                        continue
+                                                    break   
+                                                break 
+                                            else:
+                                                print("\nsorry,i did not quite get the application name. Please try again. ")
+                                                continue                     
 if __name__ == '__main__':
     main()            
