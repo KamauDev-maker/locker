@@ -1,3 +1,4 @@
+from cgi import print_arguments
 from numpy import int32
 from users import Users, Credentials
 
@@ -199,6 +200,53 @@ def main():
                                                 break 
                                             else:
                                                 print("\nsorry,i did not quite get the application name. Please try again. ")
-                                                continue                     
+                                                continue 
+                                    elif credentials_navigation == 'FC':
+                                        if len(Credentials.credentials__list) >=1:
+                                            print("\nFIND CREDENTIALS")
+                                            print("-"*16)
+                                            print("Enter the application whose credentials you would like to find. ")
+                                            print(""*6 + "*eg. Netflix")
+                                            searched_application = input().capitalize()
+                                            
+                                            if existing_credentials(searched_application):
+                                                searched_credential = find_credentials(searched_application)
+                                                print(f"\nApplication name:{searched_credential.application_name}, \n username: {searched_credential.account_username} \n password: {searched_credential.account_password}")
+                                                
+                                            else:
+                                                print(f"\nThe credentials for {searched_application} don't exist.")
+                                                continue
+                                        elif  credentials_navigation == 'DEL':
+                                            if len(Credentials.credentials__list)>=1:
+                                                print("\nDELETE CREDENTIALS")
+                                                print("-"*18)
+                                                print("Application name")
+                                                print(" "*6 + "*eg. Netflix*")
+                                                application_name = input().capitalize()
+                                                
+                                                if existing_credentials(application_name):
+                                                    while True:
+                                                        print(f"Are you sure you want to delete credentials for yor {application_name}? (Y/N)")
+                                                        delete_credential = input().upper()
+                                                        if delete_credential == 'Y':
+                                                            remove_credentials(find_credentials(application_name))
+                                                            print(f"\nCredentials for {application_name} have been successfully deleted")
+                                                            break
+                                                        elif delete_credential == 'N':
+                                                            print("\nPhew! your credentials are still intact.")
+                                                            break
+                                                        else:
+                                                            print("You did not select a valid option")
+                                                            print("Please enter (Y/N) and try again\n")
+                                                            continue
+                                                else:
+                                                    print(f"\nCredentials for {application_name} don't exist.")
+                                                    continue
+                                            else:
+                                                print("\nYou don't seem to have any credentials saved.")
+                                                continue
+                                            
+                                                        
+                                                                                         
 if __name__ == '__main__':
     main()            
