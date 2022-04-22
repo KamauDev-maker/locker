@@ -68,3 +68,11 @@ def  find_credentials(application_name):
     Function to find credentials using the application name
     """
     return Credentials.find_by_application_name(application_name)
+
+def  generate_a_password(passwordLength):
+    """
+    function that generates random password of 8 chraracters
+    """
+    return Credentials.generate_password(passwordLength)
+
+

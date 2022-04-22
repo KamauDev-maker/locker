@@ -58,14 +58,14 @@ class Credentials:
         """
         return Credentials.credentials__list
     
-    def  generate_password(passwordLenght):
+    def  generate_password(passwordLength=8):
         """
         method that generates a random password for the account user
         Args:
-            passwordLenght: password lenght for the account user
+            passwordLenght: password length for the account user
         """
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits
-        return "".join(random.choice(password)for i in range(passwordLenght))
+        return "".join(random.choice(password)for i in range(passwordLength))
     @classmethod
     def  copy_password(cls,account):
          found_credentials = Credentials.find_credential(account)
