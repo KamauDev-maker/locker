@@ -56,3 +56,15 @@ def display_credentials():
     function that returns all saved credentials
     """
     return Credentials.display_credentials()
+
+def  existing_credentials(application_name,account_username,account_password):
+    """
+    function to check that credentials for user exists
+    """
+    return Credentials.credentials_exist(application_name,account_username,account_password)
+
+def  find_credentials(application_name):
+    """
+    Function to find credentials using the application name
+    """
+    return Credentials.find_by_application_name(application_name)
