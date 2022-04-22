@@ -76,3 +76,10 @@ def  generate_a_password(passwordLength):
     return Credentials.generate_password(passwordLength)
 
 
+def main():
+    print(" "*8 + "PASSWORD LOCKER" + " "*8)
+    print("--"*16)
+    print("An Application that manages your password. ")
+    while True:
+        print("What is your name? ")    
+    
