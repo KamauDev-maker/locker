@@ -1,5 +1,4 @@
-from users import Users
-from credentials import Credentials
+from users import Users, Credentials
 
 def  create_user(username,login_password):
     """
@@ -98,7 +97,7 @@ def main():
                     while True:
                         username = input().capitalize()
                         if username.isalpha():
-                            print("Enter a password")
+                            print("Choose a password")
                             print(" "*6 +"*the password must be 8 character or more characters*")
                             while True:
                                 login_password = input()
@@ -115,5 +114,53 @@ def main():
                              print("Please use a password of 8 characters or more.")
                              continue
                         break           
-                                                
-            
+                elif short_code == 'LI':
+                    print("\nLOGIN")
+                    print("-"*7)
+                    
+                    print("Enter your username")
+                    username = input().strip(' ').capitalize()
+                    print("Enter your password")
+                    login_password = input().strip(' ')
+                    
+                    if existing_user(username,login_password):
+                        print("\nLog in successful")
+                        print("what would like to do? ")
+                        
+                        while True:
+                            print("\nUse these short codes for navigation: \n CC: create new credentials \n FC: find a credential \n DEL: delete a credential \n SC: see all saved credentils \n LO: log out")
+                            credentials_navigation = input().upper()
+                            
+                            if credentials_navigation == 'CC':
+                                print("\nCREATE NEW CREDENTIALS")
+                                print("-"*22)
+                                while True:
+                                    print("Application name")
+                                    print(" "*4 + "*eg. Netflix") 
+                                    application_name = input().capitalize().strip(' ')
+                                    if application_name != '':
+                                        print(f"What is your current username on {application_name}?" )
+                                        account_username = input()
+                                        
+                                        while True:
+                                            print(f"\nDo you already have a password on {application_name}?  (Y/N")
+                                            has_password = input().upper()
+                                            if has_password == 'Y':
+                                                print(f"Enter your {application_name} password")
+                                                account_password = input()
+                                                add_credentials(create_credentials(
+                                                    
+                                                    application_name,account_username,account_password ))
+                                                print(f"\nAccount credentials for your {application_name} account have been successfully saved. ")
+                                                break
+                                            elif has_password == 'N':
+                                                while True:
+                                                    print("Would you like a generated password? (Y/N)")
+                                                    gen_pass = input().upper()
+                                                    if gen_pass == 'Y':
+                                                        print("How long would you like your password to be? ")
+                                                        print(" "*6 + "less than 8 characters: WEAK" + "\n" + " "*6 + "8 characters:STRONG" + "\n" + " "*6 + "8-20 characters:VERY STRONG") 
+                                                        while True:  
+                                                                          
+if __name__ == '__main__':
+    main()            
