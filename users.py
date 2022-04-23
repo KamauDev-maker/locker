@@ -67,8 +67,8 @@ class Credentials:
         password = string.ascii_uppercase + string.ascii_lowercase + string.digits
         return "".join(random.choice(password)for i in range(passwordLength))
     @classmethod
-    def  copy_password(cls,account):
-         found_credentials = Credentials.find_credential(account)
+    def  copy_password(cls,application_name):
+         found_credentials = Credentials.find_credential(application_name)
          pyperclip.copy(found_credentials.password)
 
 
@@ -120,7 +120,7 @@ class Users:
             username :username used to login
             login_password:password for the user
         """
-        for user in Users.user_list:
-            if user.username == username and user.login_password == login_password:
+        for user in Users.users_list:
+           if user.username == username and user.login_password == login_password:
                 return True
         return False   
