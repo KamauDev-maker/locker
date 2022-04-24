@@ -21,7 +21,7 @@ def delete_user(user):
     """
     function to remove user
     """
-    user.delete_user()
+    user.remove_user()
 
 
 def find_user(username):
@@ -58,7 +58,7 @@ def remove_credentials(new_credentials):
     """
     function to delete credentials
     """
-    new_credentials.delete_credentials
+    new_credentials.delete_credentials()
 
 
 def display_credentials():
